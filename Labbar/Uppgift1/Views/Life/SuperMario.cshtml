@@ -1,7 +1,24 @@
 ﻿
 @{
     ViewBag.Title = "SuperMario";
+    var speed = 200;
 }
 
 <h2>SuperMario @ViewBag.GetHelp</h2>
-
+<ul>
+    @for (int i = 100; i > 50; i -= 4)
+    {
+        <li>loop count: @i </li>
+    }
+</ul>
+<h3> if else</h3>
+@{
+    if (speed > 200)
+    {
+       <p>Detta är en sportbil </p>
+    }
+    else
+    {
+        <p>Detta är en vanlig bil</p>
+    }
+}

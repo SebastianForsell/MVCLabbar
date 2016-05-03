@@ -17,6 +17,20 @@ namespace Uppgift1.Controllers
             }
             return View();
         }
+        public ActionResult BrumBrum()
+        {
+            return View();
+        }
+        public ActionResult ViewDataTransfer()
+        {
+            ViewData["Beauty"] = "Det är en häst.";
+            return View();
+        }
+        public ActionResult ViewBagTransfer()
+        {
+            ViewBag.sleipnir = "Det är en häst som är svart.";
+            return View();
+        }
         public ActionResult Health()
         {
             return View();
