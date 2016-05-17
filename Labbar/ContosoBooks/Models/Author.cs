@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace ContosoBooks.Models
 {
@@ -13,9 +13,10 @@ namespace ContosoBooks.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        [Display (Name = "First Name")]
-        public string FirstName { get; set; }
-        public virtual ICollection<Book> Books { get; set; }
 
+        [Display(Name = "First Name")]
+        public string FirstMidName { get; set; }
+
+        public virtual ICollection<Book> Books { get; set; }
     }
 }
