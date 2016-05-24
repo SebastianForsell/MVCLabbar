@@ -1,0 +1,26 @@
+﻿@model TwentyOneAjax.Models.TwentyOneAjaxModel
+@{
+    ViewBag.Title = "va fan du vill";
+}
+<h2>Twenty One Aájax</h2>
+
+@using (Ajax.BeginForm("_Game", new AjaxOptions { UpdateTargetId = "gameContainerAjax" } ))
+{
+    @Html.HiddenFor(m => m.ActualNumber);
+    @Html.HiddenFor(m => m.CpuTurn);
+
+    <p>
+        1 @Html.RadioButtonFor(m => m.Increment, 1)
+        2 @Html.RadioButtonFor(m => m.Increment, 2)
+    </p>
+    <input id="Button1" type="submit" value="Submit" />
+}
+<p>Computers choice: @Html.DisplayTextFor(m => m.Increment)</p>
+<p>
+    @for (int i = 1; i <= Model.ActualNumber; i++)
+    {
+        var num = String.Format(i + ", ");
+        @num
+    }
+</p>
+<p>@Html.DisplayTextFor(m => m.GameOverText)</p>
