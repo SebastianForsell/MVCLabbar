@@ -6,32 +6,41 @@ using System.Threading.Tasks;
 
 namespace TickTackToe.Models
 {
-    class TickTackToeModel
+    public class TickTackToeModel
     {
-        public List<int> PlayerXNumbers { get; set; }
-        public List<int> PlayerONumbers { get; set; }
+        public List<int> PlayerXNumbers { get; set; } = new List<int>() { };
+        public List<int> PlayerONumbers { get; set; } = new List<int>() { };
         public int Turn { get; set; }
+        public int Choice { get; set; }
+        public string Nooo { get; set; }
         public string GameOverText { get; set; }
+        public bool GameOver { get; set; } = false;
 
-        int[,] winCombos = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9, }, { 1, 5, 9 }, { 3, 5, 7 }, { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, 9 } };
+        private int[,] winCombos = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9, }, { 1, 5, 9 }, { 3, 5, 7 }, { 1, 4, 7 }, { 2, 5, 8 }, { 3, 6, 9 } };
         public void CheckIfWon()
         {
-            if (Turn % 2 == 0)
+            if (Turn < 9)
             {
-                if (CheckIfThreeInRow(PlayerONumbers))
+                if (Turn % 2 == 1)
                 {
-                    GameOverText = "O wins!";
+                    if (CheckIfThreeInRow(PlayerONumbers))
+                    {
+                        GameOverText = "O wins!";
+                        GameOver = true;
+                    }
+                    
                 }
-            }
-            else if (CheckIfThreeInRow(PlayerXNumbers))
-            {
-                GameOverText = "X wins!";
+                else if (CheckIfThreeInRow(PlayerXNumbers))
+                {
+                    GameOverText = "X wins!";
+                    GameOver = true;
+                }
             }
             else
             {
                 GameOverText = "Draw";
+                GameOver = true;
             }
-
         }
         public bool CheckIfThreeInRow(List<int> list)
         {
@@ -52,22 +61,18 @@ namespace TickTackToe.Models
                 }
             }
             return false;
-
-            //if (list.Contains(1))
-            //{
-            //    if(list.Contains(2) && list.Contains(3))
-            //    {
-
-            //    }
-            //    else if(list.Contains(4) && list.Contains(7))
-            //    {
-
-            //    }
-            //    else if(list.Contains(5) && list.Contains(9))
-            //    {
-
-            //    }
-            //}
+        }
+        public void AddNumber()
+        {
+            if (Turn % 2 == 0)
+            {
+                PlayerONumbers.Add(Choice);
+            }
+            else
+            {
+                PlayerXNumbers.Add(Choice);
+            }
+            Turn++;
         }
     }
 }
